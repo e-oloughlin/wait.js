@@ -3,8 +3,6 @@
  * an event triggered on it when it becomes visible
  * within the viewport and optionally provide a callback
  * function to be run as well.
- *
- * @module js/plugins/msw/wait
  */
 (function(root, factory) {
 	if (typeof define === "function" && define.amd) {
@@ -19,6 +17,10 @@
 			_ = require("underscore");
 
 		module.exports = factory($, _);
+	} else {
+		var self = window.self;
+
+		self.wait = factory($, _);
 	}
 })(this, function ($, _) {
 
