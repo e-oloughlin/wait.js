@@ -1,0 +1,54 @@
+body {
+	font-family: Helvetica;
+	-webkit-font-smoothing: antialiased;
+}
+
+.page {
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 100%;
+}
+
+.one {
+	background-color: #45d295;
+	top: 0;
+}
+
+.two {
+	background-color: #55e5c4;
+	top: 100%;
+}
+
+.three {
+	background-color: #72fbff;
+	top: 200%;
+}
+
+.four {
+	background-color: #abf9ff;
+	top: 300%;
+}
+
+.five {
+	background-color: #83d0ff;
+	top: 400%;
+}
+
+.title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: blue;
+	opacity: 0.3;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+.hidden {
+	opacity: 0;
+}

@@ -18,9 +18,9 @@
 
 		module.exports = factory($, _);
 	} else {
-		var self = window.self;
+		var self = root.self;
 
-		self.wait = factory($, _);
+		self.wait = factory(jQuery, self._);
 	}
 })(this, function ($, _) {
 
@@ -37,7 +37,7 @@
 	};
 
 	/**
-	 * Trigger a custom "reveal" event on $element when
+	 * Trigger a custom "visible" event on $element when
 	 * it becomes visible within the browser's viewport
 	 *
 	 * @param  {jQuery}   	$element  	A jQuery object containing the DOM node to watch
@@ -96,7 +96,7 @@
 			if ((elementBottom + offset) >= windowTop && (elementTop - offset) <= windowBottom) {
 				if ($element.is(":hidden")) return; // Don't do anything if it's a hidden element
 
-				// Trigger a "revealed" event on the element
+				// Trigger a "visible" event on the element
 				$element.trigger("visible");
 
 				// Remove it's data attribute, it's no longer needed
