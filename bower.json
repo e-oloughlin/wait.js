@@ -1,0 +1,19 @@
+{
+  "name": "wait.js",
+  "main": "wait.js",
+  "homepage": "https://github.com/eoghanoloughlin/wait.js",
+  "description": "A script for triggering functionality based on a corresponding dom element's visiblity",
+  "keywords": [
+    "deffered",
+    "javascript",
+    "lazy-loading"
+  ],
+  "authors": [
+    "Eoghan O'Loughlin"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "underscore": "^1.8.3"
+  }
+}
