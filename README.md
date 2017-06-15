@@ -20,7 +20,7 @@ With jQuery and Underscore available, in your main script you need to first iden
 // Identify the dom element in question
 var $myEl = $(".my-dom-element");
 
-// When the page is scrolled or window resized, a "visible" event
+// When the dom element comes into view due to page scroll or window resize, a "visible" event
 // gets triggered on the element, so first add your listener
 $myEl.on("visible", function() {
     alert("My dom element has shown up in the viewport");
