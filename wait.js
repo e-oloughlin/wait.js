@@ -108,7 +108,7 @@
 				windowBottom	= windowTop + $window.height(),
 				elementTop 		= $element.offset().top,
 				elementBottom	= elementTop + $element.height(),
-				offset			= typeof options.offset === "undefined" ? 50 : options.offset;
+				offset			= typeof options.offset === "undefined" ? 0 : options.offset;
 
 			// If any part of the element is within the browser's viewport
 			if ((elementBottom + offset) >= windowTop && (elementTop - offset) <= windowBottom) {
