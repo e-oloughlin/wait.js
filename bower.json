@@ -1,19 +1,27 @@
 {
   "name": "wait.js",
   "main": "wait.js",
-  "homepage": "https://github.com/eoghanoloughlin/wait.js",
-  "description": "A script for triggering functionality based on a corresponding dom element's visiblity",
-  "keywords": [
-    "deffered",
-    "javascript",
-    "lazy-loading"
-  ],
+  "homepage": "https://github.com/e-oloughlin/wait.js",
   "authors": [
-    "Eoghan O'Loughlin"
+    "Eoghan O'Loughlin <eoghanoloughlin@ymail.com>"
+  ],
+  "description": "A javascript library for correlating functionality with the position of a given dom element relative to the viewport",
+  "keywords": [
+    "visibility",
+    "viewport",
+    "scrolling",
+    "scroll"
   ],
   "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "jquery": "^3.1.1",
+    "jquery": "^3.2.1",
     "underscore": "^1.8.3"
   }
 }

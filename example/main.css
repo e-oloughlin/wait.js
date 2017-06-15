@@ -3,6 +3,17 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+.timer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	font-size: 30px;
+	color: white;
+	padding: 10px;
+	background-color: black;
+}
+
 .page {
 	position: absolute;
 	left: 0;
@@ -35,18 +46,33 @@ body {
 	top: 400%;
 }
 
-.title {
+.six {
+	background-color: #55e5c4;
+	top: 500%;
+}
+
+.seven {
+	background-color: #72fbff;
+	top: 600%;
+}
+
+.eight {
+	background-color: #abf9ff;
+	top: 700%;
+}
+
+.text {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: blue;
 	opacity: 0.3;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-	-ms-transition: all 0.8s;
-	transition: all 0.8s;
+	-webkit-transition: all 2s;
+	-moz-transition: all 2s;
+	-o-transition: all 2s;
+	-ms-transition: all 2s;
+	transition: all 2s;
 }
 
 .hidden {

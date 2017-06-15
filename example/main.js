@@ -1,30 +1,55 @@
-$(function() {
+/**
+ * @param  {Number}
+ * @return {String}
+ */
+function prependZero(time) {
+	if (time < 10) {
+		return "0"+time;
+	}
 
-	// -------- Example no 1 -------- //
+	return time;
+}
+
+// Once jQuery is loaded
+$(function() {
+	var time = 0;
+
+	var $timer = $('.timer');
+
+	// Update the timer on the page to show how long
+	// has passed
+	setInterval(function () {
+		time++;
+
+		$timer.text(prependZero(time));
+	}, 1000);
 
 	// The dom element we are waiting to be in the viewport
-	var $pageThree = $(".page.three");
+	$(".text").each(function(i, element) {
+		var $el = $(element);
 
-	// add an event listener to the element which will be triggered
-	// once within the viewport
-	$pageThree.on("visible", function (e) {
-		$(e.target).find(".title").removeClass("hidden");
+		$el.on("visible", function () {
+			console.log(time);
+		});
+
+		wait($el);
+	});
+
+
+	/*	
+	$text.on("visible", function (e) {
+		// $(e.target).find(".title").removeClass("hidden");
+
+
 	});
 
 	// Instantiate wait on the element
-	wait($pageThree);
+	*/
 
-	// -------- Example no 2 -------- //
-
-	// Another dom element we are waiting to be in the viewport
-	var $pageTwo = $(".page.two");
-
-	console.log($pageTwo);
-
-	wait($pageTwo, {
-		offset:  0,
-		callback: function (e) {
+	// wait($pageTwo, {
+	// 	offset:  0,
+	// 	callback: function (e) {
 			
-		}
-	})
+	// 	}
+	// })
 });
