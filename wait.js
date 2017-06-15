@@ -25,6 +25,14 @@
 })(this, function ($, _) {
 
 	/**
+	 * Keep a record of each timestamp used for namespacing events
+	 * as loops tend to go fast enough to generate duplicates
+	 *
+	 * @type {Array}
+	 */
+	var timestamps = [];
+
+	/**
 	 * Generates a custom scroll + resize
 	 * event namespace with a timestamp
 	 *
@@ -33,6 +41,16 @@
 	 * @return {String}			The namespace
 	 */
 	var generateEventNameSpace = function (timestamp) {
+		timestamp = timestamp || new Date().getTime();
+
+		// if the timestamp has already been used,
+		// modify it to avoid duplicates
+		if (timestamps.indexOf(timestamp) > -1) {
+			timestamp = timestamp + timestamps.length;
+		}
+
+		timestamps.push(timestamp);
+
 		return "scroll."+timestamp+" resize."+timestamp;
 	};
 
@@ -59,12 +77,12 @@
 		var $window = $(window),
 
 		/**
-		 * An unique namespaced event used for scroll + window.resize to allow
+		 * A unique namespaced event used for scroll + window.resize to allow
 		 * easy event removal when this instance has served it's purpose or is
 		 * no longer needed.
 		 * @type {String}
 		 */
-		eventName = generateEventNameSpace(new Date().getTime()),
+		eventName = generateEventNameSpace(),
 
 		/**
 		 * The name of the event of a previous instance
@@ -90,7 +108,7 @@
 				windowBottom	= windowTop + $window.height(),
 				elementTop 		= $element.offset().top,
 				elementBottom	= elementTop + $element.height(),
-				offset			= options.offset || 50;
+				offset			= typeof options.offset === "undefined" ? 50 : options.offset;
 
 			// If any part of the element is within the browser's viewport
 			if ((elementBottom + offset) >= windowTop && (elementTop - offset) <= windowBottom) {
