@@ -5,7 +5,7 @@
   "authors": [
     "Eoghan O'Loughlin <eoghanoloughlin@ymail.com>"
   ],
-  "description": "A javascript library for correlating functionality with the position of a given dom element relative to the viewport",
+  "description": "A plugin for correlating functionality with the position of a DOM element relative to the viewport.",
   "keywords": [
     "visibility",
     "viewport",
