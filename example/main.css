@@ -3,6 +3,14 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+h1 {
+	font-size: 45px;
+}
+
+h2 {
+	font-size: 32px;
+}
+
 .timer {
 	position: fixed;
 	top: 0;
@@ -21,47 +29,51 @@ body {
 	height: 100%;
 }
 
-.one {
+.first {
 	background-color: #45d295;
 	top: 0;
 }
 
-.two {
+.title {
+	text-shadow: 0px 1px white;
+}
+
+.one {
 	background-color: #55e5c4;
 	top: 100%;
 }
 
-.three {
+.two {
 	background-color: #72fbff;
 	top: 200%;
 }
 
-.four {
+.three {
 	background-color: #abf9ff;
 	top: 300%;
 }
 
-.five {
+.four {
 	background-color: #83d0ff;
 	top: 400%;
 }
 
-.six {
+.five {
 	background-color: #55e5c4;
 	top: 500%;
 }
 
-.seven {
+.six {
 	background-color: #72fbff;
 	top: 600%;
 }
 
-.eight {
+.seven {
 	background-color: #abf9ff;
 	top: 700%;
 }
 
-.text {
+.center {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -73,6 +85,7 @@ body {
 	-o-transition: all 2s;
 	-ms-transition: all 2s;
 	transition: all 2s;
+	text-align: center;
 }
 
 .hidden {
