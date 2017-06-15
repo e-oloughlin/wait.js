@@ -1,10 +1,12 @@
 # Wait.js
 A javacript plugin for correlating functionality with the position of a DOM element relative to the viewport. Use this plugin to control what happens when a HTML element becomes visible within the viewport.
 
-### Dependencies
-The plugin currently (but not indefinitely) depends on:
+### Getting Started
+The plugin currently (but not indefinitely) has the following dependencies:
 * jQuery
 * Underscore
+
+Wait supports both **AMD** and **CommonJS** inclusion and will be available as the browser global ```wait``` if included via a script tag.
 
 ### Usage
 With jQuery and Underscore available, in your main script you need to first identify what DOM element you are waiting to become visible within the viewport:
