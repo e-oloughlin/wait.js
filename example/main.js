@@ -12,7 +12,7 @@ function prependZero(time) {
 	return time;
 }
 
-// Once jQuery is loaded
+// When page is ready
 $(function() {
 	// Keep a record of how much time has passed
 	// since page load
