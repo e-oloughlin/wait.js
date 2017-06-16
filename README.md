@@ -1,5 +1,5 @@
 # Wait.js
-A javacript plugin for correlating functionality with the position of a DOM element relative to the viewport. Use this plugin to control what happens when a HTML element becomes visible within the viewport.
+A javascript plugin for correlating functionality with the visibility of a DOM element within the viewport. Use this plugin to control what happens when a HTML element becomes visible within the viewport.
 
 ## Getting Started
 
