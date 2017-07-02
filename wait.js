@@ -7,22 +7,20 @@
 (function(root, factory) {
 	if (typeof define === "function" && define.amd) {
 		define(function(require) {
-			var $ = require("jquery"),
-				_ = require("underscore");
+			var $ = require("jquery");
 
-			return factory($, _);
+			return factory($);
 		});
 	} else if (typeof module !== "undefined") {
-		var $ = require("jquery"),
-			_ = require("underscore");
+		var $ = require("jquery");
 
-		module.exports = factory($, _);
+		module.exports = factory($);
 	} else {
 		var self = root.self;
 
-		self.wait = factory(jQuery, self._);
+		self.wait = factory(jQuery);
 	}
-})(this, function($, _) {
+})(this, function($) {
 
 	/**
 	 * Keep a record of each timestamp used for namespacing events
@@ -97,24 +95,24 @@
 			args = arguments;
 
 			if (remaining <= 0 || remaining > wait) {
+				if (timeout) {
+					clearTimeout(timeout);
 
-			if (timeout) {
-				clearTimeout(timeout);
+					timeout = null;
+				}
 
-				timeout = null;
+				previous = now;
+
+				result = func.apply(context, args);
+
+				if (!timeout) {
+					context = args = null;
+				} else if (!timeout && options.trailing !== false) {
+					timeout = setTimeout(later, remaining);
+				}
+
+				return result;
 			}
-
-			previous = now;
-
-			result = func.apply(context, args);
-
-			if (!timeout) {
-				context = args = null;
-			} else if (!timeout && options.trailing !== false) {
-				timeout = setTimeout(later, remaining);
-			}
-
-			return result;
 		};
 	};
 
