@@ -6,7 +6,7 @@
  */
 (function(root, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(function (require) {
+		define(function(require) {
 			var $ = require("jquery"),
 				_ = require("underscore");
 
@@ -22,7 +22,7 @@
 
 		self.wait = factory(jQuery, self._);
 	}
-})(this, function ($, _) {
+})(this, function($, _) {
 
 	/**
 	 * Keep a record of each timestamp used for namespacing events
@@ -40,7 +40,7 @@
 	 *
 	 * @return {String}			The namespace
 	 */
-	var generateEventNameSpace = function (timestamp) {
+	var generateEventNameSpace = function(timestamp) {
 		timestamp = timestamp || new Date().getTime();
 
 		// if the timestamp has already been used,
@@ -55,6 +55,70 @@
 	};
 
 	/**
+	 * Shamelessly lifted from underscore.js..... see http://underscorejs.org/#throttle
+	 *
+	 * Returns a function, that, when invoked,
+	 * will only be triggered at most once during a given window of time.
+	 *
+	 * @param  {Function} 	func    	The function to be throttled
+	 * @param  {Number} 	wait    	A duration in milliseconds to delay the function execution
+	 * @param  {Object} 	options 	Additional options
+	 *
+	 * @return {Function}
+	 */
+	var throttle = function(func, wait, options) {
+		var context, args, result;
+
+		var timeout = null;
+
+		var previous = 0;
+
+		if (!options) options = {};
+
+		var later = function() {
+			previous = options.leading === false ? 0 : new Date().getTime();
+
+			timeout = null;
+
+			result = func.apply(context, args);
+
+			if (!timeout) context = args = null;
+		};
+
+		return function() {
+			var now = new Date().getTime();
+
+			if (!previous && options.leading === false) previous = now;
+
+			var remaining = wait - (now - previous);
+
+			context = this;
+
+			args = arguments;
+
+			if (remaining <= 0 || remaining > wait) {
+
+			if (timeout) {
+				clearTimeout(timeout);
+
+				timeout = null;
+			}
+
+			previous = now;
+
+			result = func.apply(context, args);
+
+			if (!timeout) {
+				context = args = null;
+			} else if (!timeout && options.trailing !== false) {
+				timeout = setTimeout(later, remaining);
+			}
+
+			return result;
+		};
+	};
+
+	/**
 	 * Trigger a custom "visible" event on $element when
 	 * it becomes visible within the browser's viewport
 	 *
@@ -65,7 +129,7 @@
 	 * 		 	{object} 		context 	What the value of 'this' should be inside the callback
 	 * 		  	{Number}		offset		The number of pixels in advance of visibility to trigger the event/callback
 	 */
-	return function ($element, options) {
+	return function($element, options) {
 		if (!$element instanceof $ || $element.length < 1) return false;
 
 		options = options || {};
@@ -131,7 +195,7 @@
 		};
 
 		// When the browser is scrolled or resized, check the element's visibility
-		$window.on(eventName, _.throttle(checkVisible, 100));
+		$window.on(eventName, throttle(checkVisible, 100));
 
 		// And check it right now too
 		checkVisible();
