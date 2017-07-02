@@ -9,6 +9,8 @@ Wait is available on bower:
 bower install wait.js
 ```
 
+To view the example page simply run ```bower install``` inside the *example* directory and open *index.html*.
+
 The plugin depends on jQuery.
 
 Wait supports both **AMD** and **CommonJS** inclusion and will be available as the browser global ```wait``` if included via a script tag.
