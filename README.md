@@ -9,12 +9,12 @@ Wait is available on bower:
 bower install wait.js
 ```
 
-The plugin currently (but not indefinitely) depends on jQuery & Underscore.
+The plugin depends on jQuery.
 
 Wait supports both **AMD** and **CommonJS** inclusion and will be available as the browser global ```wait``` if included via a script tag.
 
 ## Usage
-With jQuery and Underscore available, in your main script you need to first identify what DOM element you are waiting to become visible within the viewport:
+With jQuery available, in your main script you need to first identify what DOM element you are waiting to become visible within the viewport:
 
 ``` javascript
 // Identify the dom element in question
@@ -50,5 +50,4 @@ wait($myEl, {
 ```
 
 ## To Do
-  * Remove underscore dependency
   * Create vanilla js version
