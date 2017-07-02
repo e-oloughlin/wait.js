@@ -5,39 +5,39 @@
  * @return {Number|String}
  */
 function prependZero(time) {
-	if (time < 10) {
-		return "0"+time;
-	}
+    if (time < 10) {
+        return "0"+time;
+    }
 
-	return time;
+    return time;
 }
 
 // When page is ready
 $(function() {
-	// Keep a record of how much time has passed
-	// since page load
-	var time = 0;
+    // Keep a record of how much time has passed
+    // since page load
+    var time = 0;
 
-	// Update the timer every second
-	setInterval(function () {
-		time++;
+    // Update the timer every second
+    setInterval(function () {
+        time++;
 
-		$('.timer').text(prependZero(time));
-	}, 1000);
+        $('.timer').text(prependZero(time));
+    }, 1000);
 
-	// Loop through each text element
-	$(".text").each(function(i, element) {
-		var $el = $(element);
+    // Loop through each text element
+    $(".text").each(function(i, element) {
+        var $el = $(element);
 
-		// When it becomes visible, show the current time since page load
-		$el.on("visible", function () {
-			$el.text("You scrolled to this point in "+time+" seconds");
-		});
+        // When it becomes visible, show the current time since page load
+        $el.on("visible", function () {
+            $el.text("You scrolled to this point in "+time+" seconds");
+        });
 
-		// Bind the event listener, specifying the event should be
-		// triggered 20px away from the dom element
-		wait($el, {
-			offset: 20
-		});
-	});
+        // Bind the event listener, specifying the event should be
+        // triggered 20px away from the dom element
+        wait($el, {
+            offset: 20
+        });
+    });
 });
