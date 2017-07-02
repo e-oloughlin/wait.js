@@ -1,0 +1,6 @@
+{
+    "name": "waitjs-example",
+    "dependencies": {
+        "jquery": "^3.2.1"
+    }
+}
