@@ -53,3 +53,4 @@ wait($myEl, {
 
 ## To Do
   * Create vanilla js version
+  * Add tests

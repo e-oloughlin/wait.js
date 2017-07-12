@@ -41,7 +41,7 @@
     var generateEventNameSpace = function(timestamp) {
         timestamp = timestamp || new Date().getTime();
 
-        // if the timestamp has already been used,
+        // if the timestamp has already been used (may occur if creating instances in a loop),
         // modify it to avoid duplicates
         if (timestamps.indexOf(timestamp) > -1) {
             timestamp = timestamp + timestamps.length;
@@ -106,7 +106,7 @@
      * it becomes visible within the browser's viewport
      *
      * @param  {jQuery}     $element    A jQuery object containing the DOM node to watch
-     * @param  {Object}     options     Polyorphic: see below
+     * @param  {Object}     options     See below:
      *
      *          {Function}      callback    An optional callback to execute when the element comes in view
      *          {object}        context     What the value of 'this' should be inside the callback
@@ -171,7 +171,7 @@
                 $window.off(eventName);
 
                 // If a callback was passed, call it
-                if (typeof(options.callback) === "function") {
+                if (typeof options.callback === "function") {
                     options.callback.call(options.context || window);
                 }
             }
