@@ -18,6 +18,9 @@ $(function() {
     // since page load
     var time = 0;
 
+    // Each heading on the page
+    var headings = document.getElementsByClassName('text');
+
     // Update the timer every second
     setInterval(function () {
         time++;
@@ -25,8 +28,16 @@ $(function() {
         $('.timer').text(prependZero(time));
     }, 1000);
 
+    for (var i = 0; i < headings.length; i++) {
+        // Bind the event listener, specifying the event should be
+        // triggered 20px away from the dom element
+        wait(headings[i], {
+            offset: 20
+        });
+    }
+
     // Loop through each text element
-    $(".text").each(function(i, element) {
+    /*$(".text").each(function(i, element) {
         var $el = $(element);
 
         // When it becomes visible, show the current time since page load
@@ -39,5 +50,5 @@ $(function() {
         wait($el, {
             offset: 20
         });
-    });
+    });*/
 });

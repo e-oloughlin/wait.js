@@ -102,18 +102,18 @@
     };
 
     /**
-     * Trigger a custom "visible" event on $element when
+     * Trigger a custom "visible" event on el when
      * it becomes visible within the browser's viewport
      *
-     * @param  {jQuery}     $element    A jQuery object containing the DOM node to watch
-     * @param  {Object}     options     See below:
+     * @param  {HTMLElement}    el          The target DOM element
+     * @param  {Object}         options     See below:
      *
      *          {Function}      callback    An optional callback to execute when the element comes in view
      *          {object}        context     What the value of 'this' should be inside the callback
      *          {Number}        offset      The number of pixels in advance of visibility to trigger the event/callback
      */
-    return function($element, options) {
-        if (!$element instanceof $ || $element.length < 1) return false;
+    return function(el, options) {
+        if (!el instanceof HTMLElement) return false;
 
         options = options || {};
 
@@ -136,36 +136,36 @@
          * with the element, if it exists.
          * @type {String|Undefined}
          */
-        oldEventName = $element.data("waitInstance");
+        oldEventName = el.dataset.waitEventInstance;
 
-        // If the element passed already has a "waitInstance" data attribute,
+        // If the element passed already has a "waitEventInstance" data attribute,
         // this means an event has already been created for it, so remove the event
         if (oldEventName && typeof oldEventName === "string") {
-            $window.off(oldEventName);
+            window.removeEventListener(oldEventName, checkVisible);
         }
 
-        // Set the waitInstance on the dom element for future checks
-        $element.data("waitInstance", eventName);
+        // Set the waitEventInstance on the dom element for future checks
+        el.dataset.waitEventInstance = eventName;
 
         /**
          * Checks if the element is in view
          */
-        var checkVisible = function() {
+        var checkVisible = throttle(function() {
             var windowTop       = $window.scrollTop(),
                 windowBottom    = windowTop + $window.height(),
-                elementTop      = $element.offset().top,
-                elementBottom   = elementTop + $element.height(),
+                elementTop      = el.offset().top,
+                elementBottom   = elementTop + el.height(),
                 offset          = typeof options.offset === "undefined" ? 0 : options.offset;
 
             // If any part of the element is within the browser's viewport
             if ((elementBottom + offset) >= windowTop && (elementTop - offset) <= windowBottom) {
-                if ($element.is(":hidden")) return; // Don't do anything if it's a hidden element
+                if (el.is(":hidden")) return; // Don't do anything if it's a hidden element
 
                 // Trigger a "visible" event on the element
-                $element.trigger("visible");
+                el.trigger("visible");
 
                 // Remove it's data attribute, it's no longer needed
-                $element.removeData("waitInstance");
+                el.removeData("waitEventInstance");
 
                 // Remove the event listener for this instance
                 $window.off(eventName);
@@ -175,10 +175,10 @@
                     options.callback.call(options.context || window);
                 }
             }
-        };
+        }, 100);
 
         // When the browser is scrolled or resized, check the element's visibility
-        $window.on(eventName, throttle(checkVisible, 100));
+        window.addEventListener(eventName, checkVisible);
 
         // And check it right now too
         checkVisible();
