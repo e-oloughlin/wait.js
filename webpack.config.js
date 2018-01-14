@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-module.exports = {
+module.exports = [{
     entry: path.resolve(__dirname, 'src', 'wait.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -36,4 +36,10 @@ module.exports = {
             root: '$'
         }
     }
-};
+},{
+    entry: path.resolve(__dirname, 'example', 'src', 'index.js'),
+    output: {
+        path: path.resolve(__dirname, 'example', 'dist'),
+        filename: 'index.js'
+    }
+}];

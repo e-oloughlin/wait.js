@@ -1,3 +1,5 @@
+const wait = require('wait');
+
 /**
  * Adds a zero before a number if it's less than 10
  *
