@@ -1,0 +1,41 @@
+{
+  "name": "wait.js",
+  "version": "1.0.0",
+  "description": "A javascript utility for correlating functionality with a DOM element's visibility within the viewport.",
+  "main": "wait.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-oloughlin/wait.js.git"
+  },
+  "keywords": [
+    "javacript-plugin",
+    "viewport",
+    "dom",
+    "visibility",
+    "html",
+    "scroll"
+  ],
+  "author": "Eoghan O'Loughlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/e-oloughlin/wait.js/issues"
+  },
+  "homepage": "https://github.com/e-oloughlin/wait.js#readme",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "lodash.throttle": "^4.1.1"
+  },
+  "devDependencies": {
+    "webpack": "^3.10.0",
+    "@babel/core": "^7.0.0-beta.36",
+    "@babel/preset-env": "^7.0.0-beta.36",
+    "babel-loader": "^8.0.0-beta.0",
+    "babel-minify-webpack-plugin": "^0.2.0"
+  }
+}
